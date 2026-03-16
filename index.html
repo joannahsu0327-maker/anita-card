@@ -8,7 +8,7 @@
 </head>
 <body>
     <script>
-      const PHOEBE_DATA = {
+      const ANITA_DATA = {
             LIFF_ID: "2009473853-jpajr4P0",
             BASE_URL: "https://joannahsu0327-maker.github.io/anita-card/",
             IMG_MAIN: "PHOEBE_IMAGE.jpg",
@@ -35,40 +35,40 @@
 
 async function main() {
             try {
-                await liff.init({ liffId: PHOEBE_DATA.LIFF_ID });
+                await liff.init({ liffId: ANITA_DATA.LIFF_ID });
                 if (!liff.isLoggedIn()) { liff.login(); return; }
                 
                 const ts = "?t=" + Date.now();
                 await liff.shareTargetPicker([{
                     "type": "flex", 
-                    "altText": "您好，這是 " + PHOEBE_DATA.name + " 的專業名片",
+                    "altText": "您好，這是 " + ANITA_DATA.name + " 的專業名片",
                     "contents": {
                         "type": "carousel",
                         "contents": [
                             { 
                                 "type": "bubble", 
-                                "hero": { "type": "image", "url": PHOEBE_DATA.BASE_URL + PHOEBE_DATA.IMG_MAIN + ts, "size": "full", "aspectRatio": "3:4", "aspectMode": "cover" }, 
+                                "hero": { "type": "image", "url": ANITA_DATA.BASE_URL + ANITA_DATA.IMG_MAIN + ts, "size": "full", "aspectRatio": "3:4", "aspectMode": "cover" }, 
                                 "body": { "type": "box", "layout": "vertical", "contents": [ 
-                                    { "type": "text", "text": PHOEBE_DATA.name, "weight": "bold", "size": "xl" }, 
-                                    { "type": "text", "text": PHOEBE_DATA.title, "size": "sm", "color": "#fb966e", "weight": "bold" } 
+                                    { "type": "text", "text": ANITA_DATA.name, "weight": "bold", "size": "xl" }, 
+                                    { "type": "text", "text": ANITA_DATA.title, "size": "sm", "color": "#fb966e", "weight": "bold" } 
                                 ] } 
                             },
                             { 
                                 "type": "bubble", 
-                                "hero": { "type": "image", "url": PHOEBE_DATA.IMG_INTRO, "size": "full", "aspectRatio": "20:13", "aspectMode": "cover" }, 
+                                "hero": { "type": "image", "url": ANITA_DATA.IMG_INTRO, "size": "full", "aspectRatio": "20:13", "aspectMode": "cover" }, 
                                 "body": { "type": "box", "layout": "vertical", "spacing": "lg", "contents": [
-                                    { "type": "text", "text": PHOEBE_DATA.intro, "size": "xs", "color": "#888888", "wrap": true },
-                                    { "type": "text", "text": PHOEBE_DATA.feature_Title, "weight": "bold", "size": "lg", "color": "#fb966e" },
+                                    { "type": "text", "text": ANITA_DATA.intro, "size": "xs", "color": "#888888", "wrap": true },
+                                    { "type": "text", "text": ANITA_DATA.feature_Title, "weight": "bold", "size": "lg", "color": "#fb966e" },
                                     { "type": "box", "layout": "vertical", "spacing": "sm", "contents": [
-                                        { "type": "text", "text": PHOEBE_DATA.item1, "size": "md", "weight": "bold" },
-                                        { "type": "text", "text": PHOEBE_DATA.item2, "size": "md", "weight": "bold" },
-                                        { "type": "text", "text": PHOEBE_DATA.item3, "size": "md", "weight": "bold" },
-                                        { "type": "text", "text": PHOEBE_DATA.item4, "size": "md", "weight": "bold" },
-                                        { "type": "text", "text": PHOEBE_DATA.item5, "size": "md", "weight": "bold" }
+                                        { "type": "text", "text": ANITA_DATA.item1, "size": "md", "weight": "bold" },
+                                        { "type": "text", "text": ANITA_DATA.item2, "size": "md", "weight": "bold" },
+                                        { "type": "text", "text": ANITA_DATA.item3, "size": "md", "weight": "bold" },
+                                        { "type": "text", "text": ANITA_DATA.item4, "size": "md", "weight": "bold" },
+                                        { "type": "text", "text": ANITA_DATA.item5, "size": "md", "weight": "bold" }
                                     ]}
                                 ]},
                                 "footer": { "type": "box", "layout": "vertical", "contents": [ 
-                                    { "type": "button", "style": "primary", "color": "#fb966e", "action": { "type": "uri", "label": "預約諮詢", "uri": PHOEBE_DATA.url_Booking } } 
+                                    { "type": "button", "style": "primary", "color": "#fb966e", "action": { "type": "uri", "label": "預約諮詢", "uri": ANITA_DATA.url_Booking } } 
                                 ] }
                             },
                             { 
@@ -76,11 +76,11 @@ async function main() {
                                 "body": { "type": "box", "layout": "vertical", "spacing": "md", "contents": [
                                     { "type": "text", "text": "與我聯繫", "weight": "bold", "size": "lg" }, { "type": "separator" },
                                     { "type": "box", "layout": "vertical", "spacing": "sm", "contents": [
-                                        { "type": "button", "style": "primary", "color": "#fb966e", "action": { "type": "uri", "label": "撥打電話", "uri": "tel:" + PHOEBE_DATA.phone } },
-                                        { "type": "button", "style": "secondary", "color": "#EEEEEE", "action": { "type": "uri", "label": "加 LINE 好友", "uri": PHOEBE_DATA.url_Booking } },
-                                        { "type": "button", "style": "secondary", "color": "#FEE8F0", "action": { "type": "uri", "label": "追蹤 Instagram", "uri": PHOEBE_DATA.url_IG } },
-                                        { "type": "button", "style": "secondary", "color": "#E8F0FE", "action": { "type": "uri", "label": "Facebook", "uri": PHOEBE_DATA.url_FB } },
-                                        { "type": "button", "style": "link", "height": "sm", "action": { "type": "uri", "label": "📤 分享財富傳承名片", "uri": "https://liff.line.me/" + PHOEBE_DATA.LIFF_ID } }
+                                        { "type": "button", "style": "primary", "color": "#fb966e", "action": { "type": "uri", "label": "撥打電話", "uri": "tel:" + ANITA_DATA.phone } },
+                                        { "type": "button", "style": "secondary", "color": "#EEEEEE", "action": { "type": "uri", "label": "加 LINE 好友", "uri": ANITA_DATA.url_Booking } },
+                                        { "type": "button", "style": "secondary", "color": "#FEE8F0", "action": { "type": "uri", "label": "追蹤 Instagram", "uri": ANITA_DATA.url_IG } },
+                                        { "type": "button", "style": "secondary", "color": "#E8F0FE", "action": { "type": "uri", "label": "Facebook", "uri": ANITA_DATA.url_FB } },
+                                        { "type": "button", "style": "link", "height": "sm", "action": { "type": "uri", "label": "📤 分享財富傳承名片", "uri": "https://liff.line.me/" + ANITA_DATA.LIFF_ID } }
                                     ]}
                                 ]}
                             }
