@@ -15,20 +15,17 @@
             IMG_INTRO: "CARE_IMAGE.jpg",
             name: "康彥琳 (康康）",
             title: "人壽保險 | 醫療長照",
-            intro: "以熱忱引領\n將用心落實承諾",
+            intro: "我一直都在 您的保險顧問",
             
-            // --- 這裡可以改標題與內容 ---
             feature_Title: "服務項目", 
             item1: "👨‍👩‍👧‍👦 家庭保障健檢",
             item2: "📑 跨理賠諮詢服務",
             item3: "⚖️ 意定監護律師團協作諮詢",
-            item4: "🏦 銀行業團隊協作諮詢", // 新增第 4 項
-            item5: "🏠 地政代書協作諮詢", // 新增第 5 項
+            item4: "🏦 銀行業團隊協作諮詢",
+            item5: "🏠 地政代書協作諮詢",
             
-            // -----------------------
-
             url_Booking: "https://line.me/ti/p/6xwM_4j3E0",
-            url_IG: "https://www.instagram.com/lillian83768",
+            url_IG: "https://www.instagram.com/anita.kang.7",
             url_FB: "https://www.facebook.com/anita.kang.7",
             phone: "0913085558"
         };
@@ -39,7 +36,7 @@ async function main() {
                 if (!liff.isLoggedIn()) { liff.login(); return; }
                 
                 const ts = "?t=" + Date.now();
-                await liff.shareTargetPicker([{
+                const res = await liff.shareTargetPicker([{
                     "type": "flex", 
                     "altText": "您好，這是 " + ANITA_DATA.name + " 的專業名片",
                     "contents": {
@@ -55,7 +52,7 @@ async function main() {
                             },
                             { 
                                 "type": "bubble", 
-                                "hero": { "type": "image", "url": ANITA_DATA.IMG_INTRO, "size": "full", "aspectRatio": "20:13", "aspectMode": "cover" }, 
+                                "hero": { "type": "image", "url": ANITA_DATA.BASE_URL + ANITA_DATA.IMG_INTRO + ts, "size": "full", "aspectRatio": "20:13", "aspectMode": "cover" }, 
                                 "body": { "type": "box", "layout": "vertical", "spacing": "lg", "contents": [
                                     { "type": "text", "text": ANITA_DATA.intro, "size": "xs", "color": "#888888", "wrap": true },
                                     { "type": "text", "text": ANITA_DATA.feature_Title, "weight": "bold", "size": "lg", "color": "#fb966e" },
@@ -87,8 +84,18 @@ async function main() {
                         ]
                     }
                 }]);
-                liff.closeWindow();
-            } catch (err) { console.error(err); }
+
+                if (res) {
+                    // 分享成功後關閉視窗
+                    liff.closeWindow();
+                } else {
+                    // 使用者取消分享
+                    console.log("TargetPicker cancelled");
+                }
+            } catch (err) { 
+                console.error(err);
+                alert("啟動失敗，請檢查權限或網址設定");
+            }
         }
         main();
     </script>
